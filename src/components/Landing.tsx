@@ -30,7 +30,7 @@ export default function Landing({ onStartSurvey }: LandingProps) {
         <div className="max-w-2xl mx-auto">
           {/* Date separator */}
           <div className="flex justify-center py-3">
-            <span className="text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full">Yesterday</span>
+            <span className="text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full">Today</span>
           </div>
 
           {/* Meta Security Message */}
