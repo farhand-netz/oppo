@@ -32,7 +32,7 @@ export default function Question1({ value, onChange }: Question1Props) {
       </div>
 
       <div className="flex justify-between items-center gap-2 px-2 py-6 bg-gray-50 rounded-lg">
-        <span className="text-green-500 text-xs font-semibold whitespace-nowrap">tidak puas</span>
+        <span className="text-green-500 text-xs font-semibold whitespace-nowrap">Tidak puas</span>
         <div className="flex justify-center items-center gap-2 flex-1">
           {ratings.map((item) => (
             <button
