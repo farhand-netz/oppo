@@ -23,7 +23,7 @@ export default function Question1({ value, onChange }: Question1Props) {
         <span className="text-red-500 font-bold text-lg mt-1">*</span>
         <div className="flex-1">
           <h3 className="text-gray-900 font-semibold text-base">
-            1. Sejau mana tingkat kepuasan Anda terhadap pengalaman layanan kali ini?
+            1. Sejauh mana tingkat kepuasan Anda terhadap pengalaman layanan kali ini?
           </h3>
           <p className="text-gray-600 text-sm mt-2">
             Silakan berikan penilaian dari 1-10, di mana 1 berarti sangat tidak puas dan 10 berarti sangat puas.
@@ -32,7 +32,7 @@ export default function Question1({ value, onChange }: Question1Props) {
       </div>
 
       <div className="flex justify-between items-center gap-2 px-2 py-6 bg-gray-50 rounded-lg">
-        <span className="text-green-500 text-xs font-semibold whitespace-nowrap">Sangat tidak puas</span>
+        <span className="text-green-500 text-xs font-semibold whitespace-nowrap">tidak puas</span>
         <div className="flex justify-center items-center gap-2 flex-1">
           {ratings.map((item) => (
             <button
