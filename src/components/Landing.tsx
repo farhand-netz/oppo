@@ -21,9 +21,9 @@ export default function Landing({ onStartSurvey }: LandingProps) {
             <span className="text-white text-xs font-bold">O</span>
           </div>
           <div>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1.5">
               <h3 className="text-sm font-semibold text-gray-900">OPPO Service</h3>
-              <Check className="w-4 h-4 text-blue-500 fill-blue-500" />
+              <Check className="w-5 h-5 text-blue-500 fill-blue-500 rounded-full bg-blue-500 text-white p-0.5" />
             </div>
             <p className="text-xs text-gray-500">Business Account</p>
           </div>
@@ -54,9 +54,9 @@ export default function Landing({ onStartSurvey }: LandingProps) {
               <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-2">
                 <span className="text-white text-2xl font-bold">O</span>
               </div>
-              <div className="flex items-center justify-center gap-1">
+              <div className="flex items-center justify-center gap-1.5">
                 <h2 className="text-sm font-bold text-gray-900">OPPO Service</h2>
-                <Check className="w-4 h-4 text-blue-500 fill-blue-500" />
+                <Check className="w-5 h-5 text-blue-500 fill-blue-500 rounded-full bg-blue-500 text-white p-0.5" />
               </div>
               <p className="text-xs text-gray-600 mb-3">
                 Phone number from Malaysia • Business account • Joined in the last month
