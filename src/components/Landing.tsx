@@ -5,6 +5,12 @@ interface LandingProps {
 }
 
 export default function Landing({ onStartSurvey }: LandingProps) {
+  const currentTime = new Date().toLocaleTimeString('id-ID', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  });
+
   return (
     <div className="min-h-screen w-full bg-white flex flex-col">
       {/* Chat Header */}
@@ -88,6 +94,7 @@ export default function Landing({ onStartSurvey }: LandingProps) {
                 </button>
                 {' '}Terimakasih
               </p>
+              <p className="text-xs text-gray-500 mt-2">{currentTime}</p>
             </div>
           </div>
         </div>
