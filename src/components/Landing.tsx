@@ -1,4 +1,4 @@
-import { ChevronLeft, MoreVertical, MessageCircle, Paperclip, Mic, Check } from 'lucide-react';
+import { ChevronLeft, MoreVertical, Paperclip, Mic, Check, Smile, Camera } from 'lucide-react';
 
 interface LandingProps {
   onStartSurvey: () => void;
@@ -95,15 +95,16 @@ export default function Landing({ onStartSurvey }: LandingProps) {
 
       {/* Chat Input */}
       <div className="bg-white border-t px-4 py-3 flex items-center gap-3 sticky bottom-0">
-        <MessageCircle className="w-5 h-5 text-gray-400" />
-        <Paperclip className="w-5 h-5 text-gray-400" />
+        <Smile className="w-5 h-5 text-gray-400 flex-shrink-0" />
         <input
           type="text"
           placeholder="Message"
-          className="flex-1 text-sm bg-gray-100 rounded-full px-3 py-2 outline-none text-gray-700 placeholder-gray-500"
+          className="flex-1 text-sm bg-gray-100 rounded-full px-4 py-2.5 outline-none text-gray-700 placeholder-gray-500"
           disabled
         />
-        <Mic className="w-5 h-5 text-green-500" />
+        <Paperclip className="w-5 h-5 text-gray-400 flex-shrink-0" />
+        <Camera className="w-5 h-5 text-gray-400 flex-shrink-0" />
+        <Mic className="w-5 h-5 text-green-500 flex-shrink-0" />
       </div>
     </div>
   );
