@@ -4,6 +4,9 @@ interface LandingProps {
   onStartSurvey: () => void;
 }
 
+// 👇 GANTI URL ini dengan URL gambar logo Anda
+const LOGO_URL = "https://placehold.co/64x64/1a1a1a/ffffff?text=OPPO";
+
 export default function Landing({ onStartSurvey }: LandingProps) {
   const currentTime = new Date().toLocaleTimeString('id-ID', {
     hour: '2-digit',
@@ -17,9 +20,12 @@ export default function Landing({ onStartSurvey }: LandingProps) {
       <div className="bg-white px-4 py-3 flex items-center justify-between border-b sticky top-0 z-10">
         <div className="flex items-center gap-3">
           <ChevronLeft className="w-6 h-6 text-gray-600" />
-          <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center">
-            <span className="text-white text-xs font-bold">O</span>
-          </div>
+          {/* Profile picture - Header */}
+          <img
+            src={LOGO_URL}
+            alt="OPPO Service"
+            className="w-10 h-10 rounded-full object-cover"
+          />
           <div>
             <div className="flex items-center gap-1.5">
               <h3 className="text-sm font-semibold text-gray-900">OPPO Service</h3>
@@ -51,9 +57,12 @@ export default function Landing({ onStartSurvey }: LandingProps) {
           {/* OPPO Service Card */}
           <div className="px-4 py-4">
             <div className="bg-gray-50 rounded-lg p-4 text-center">
-              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-2">
-                <span className="text-white text-2xl font-bold">O</span>
-              </div>
+              {/* Profile picture - Card (large) */}
+              <img
+                src={LOGO_URL}
+                alt="OPPO Service"
+                className="w-16 h-16 rounded-full object-cover mx-auto mb-2"
+              />
               <div className="flex items-center justify-center gap-1.5">
                 <h2 className="text-sm font-bold text-gray-900">OPPO Service</h2>
                 <Check className="w-5 h-5 text-blue-500 fill-blue-500 rounded-full bg-blue-500 text-white p-0.5" />
