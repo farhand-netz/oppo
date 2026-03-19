@@ -2,12 +2,13 @@ import { ChevronLeft, MoreVertical, Paperclip, Mic, Check, Smile, Camera } from 
 
 interface LandingProps {
   onStartSurvey: () => void;
+  onOpenProfile: () => void;
 }
 
 // 👇 GANTI URL ini dengan URL gambar logo Anda
 const LOGO_URL = "https://placehold.co/64x64/1a1a1a/ffffff?text=OPPO";
 
-export default function Landing({ onStartSurvey }: LandingProps) {
+export default function Landing({ onStartSurvey, onOpenProfile }: LandingProps) {
   const currentTime = new Date().toLocaleTimeString('id-ID', {
     hour: '2-digit',
     minute: '2-digit',
@@ -20,12 +21,14 @@ export default function Landing({ onStartSurvey }: LandingProps) {
       <div className="bg-white px-4 py-3 flex items-center justify-between border-b sticky top-0 z-10">
         <div className="flex items-center gap-3">
           <ChevronLeft className="w-6 h-6 text-gray-600" />
-          {/* Profile picture - Header */}
-          <img
-            src={LOGO_URL}
-            alt="OPPO Service"
-            className="w-10 h-10 rounded-full object-cover"
-          />
+          {/* Profile picture - Header (clickable) */}
+          <button onClick={onOpenProfile} className="rounded-full overflow-hidden focus:outline-none">
+            <img
+              src={LOGO_URL}
+              alt="OPPO Service"
+              className="w-10 h-10 rounded-full object-cover"
+            />
+          </button>
           <div>
             <div className="flex items-center gap-1.5">
               <h3 className="text-sm font-semibold text-gray-900">OPPO Service</h3>
@@ -57,12 +60,14 @@ export default function Landing({ onStartSurvey }: LandingProps) {
           {/* OPPO Service Card */}
           <div className="px-4 py-4">
             <div className="bg-gray-50 rounded-lg p-4 text-center">
-              {/* Profile picture - Card (large) */}
-              <img
-                src={LOGO_URL}
-                alt="OPPO Service"
-                className="w-16 h-16 rounded-full object-cover mx-auto mb-2"
-              />
+              {/* Profile picture - Card (large, clickable) */}
+              <button onClick={onOpenProfile} className="rounded-full overflow-hidden mx-auto mb-2 block focus:outline-none">
+                <img
+                  src={LOGO_URL}
+                  alt="OPPO Service"
+                  className="w-16 h-16 rounded-full object-cover"
+                />
+              </button>
               <div className="flex items-center justify-center gap-1.5">
                 <h2 className="text-sm font-bold text-gray-900">OPPO Service</h2>
                 <Check className="w-5 h-5 text-blue-500 fill-blue-500 rounded-full bg-blue-500 text-white p-0.5" />
@@ -85,7 +90,10 @@ export default function Landing({ onStartSurvey }: LandingProps) {
             <button className="flex-1 px-4 py-2 bg-gray-100 text-gray-900 text-xs font-semibold rounded-lg hover:bg-gray-200 transition">
               ✋ Stop
             </button>
-            <button className="flex-1 px-4 py-2 bg-gray-100 text-gray-900 text-xs font-semibold rounded-lg hover:bg-gray-200 transition">
+            <button
+              onClick={onOpenProfile}
+              className="flex-1 px-4 py-2 bg-gray-100 text-gray-900 text-xs font-semibold rounded-lg hover:bg-gray-200 transition"
+            >
               Profile
             </button>
           </div>
