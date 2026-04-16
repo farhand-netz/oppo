@@ -31,25 +31,33 @@ export default function Question1({ value, onChange }: Question1Props) {
         </div>
       </div>
 
-      <div className="flex justify-between items-center gap-2 px-2 py-6 bg-gray-50 rounded-lg">
-        <span className="text-green-500 text-xs font-semibold whitespace-nowrap">Tdk puas</span>
-        <div className="flex justify-center items-center gap-2 flex-1">
+      <div className="bg-gray-50 rounded-lg px-2 py-4">
+        {/* Label row */}
+        <div className="flex justify-between mb-2 px-1">
+          <span className="text-green-500 text-xs font-semibold">Tdk puas</span>
+          <span className="text-green-500 text-xs font-semibold">Sangat puas</span>
+        </div>
+
+        {/* Rating buttons - responsive grid */}
+        <div className="grid grid-cols-10 gap-1">
           {ratings.map((item) => (
             <button
               key={item.value}
               onClick={() => onChange(item.value)}
-              className={`transition-all transform hover:scale-110 flex items-center justify-center rounded-full w-10 h-10 ${
-                value === item.value
-                  ? 'text-2xl ring-2 ring-green-500 scale-110 bg-green-50'
-                  : 'text-sm font-semibold text-gray-600 bg-gray-200 hover:bg-gray-300'
-              }`}
+              className={`
+                aspect-square flex items-center justify-center rounded-full
+                transition-all transform active:scale-95
+                ${value === item.value
+                  ? 'text-lg ring-2 ring-green-500 scale-110 bg-green-50'
+                  : 'text-xs font-semibold text-gray-600 bg-gray-200 hover:bg-gray-300'
+                }
+              `}
               title={`Rating ${item.value}`}
             >
               {value === item.value ? item.emoji : item.value}
             </button>
           ))}
         </div>
-        <span className="text-green-500 text-xs font-semibold whitespace-nowrap">Sangat puas</span>
       </div>
     </div>
   );
