@@ -47,7 +47,7 @@ export default function Question4({ value, onChange }: Question4Props) {
             onChange={(e) => onChange(e.target.value)}
             className="w-5 h-5 accent-green-500 cursor-pointer"
           />
-          <span className="text-gray-700 text-sm">Melebihi 2 jam</span>
+          <span className="text-gray-700 text-sm">Lebih dari 2 jam</span>
         </label>
       </div>
     </div>
