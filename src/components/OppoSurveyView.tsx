@@ -239,15 +239,9 @@ export const OppoSurveyView: React.FC<OppoSurveyViewProps> = ({
                         </span>
                       )}
 
-                      {/* Kondisi 2: Rating 9 atau 10 dipilih/hover -> Hanya angka 1 s.d rating yang menjadi Green Smile Icon */}
+                      {/* Kondisi 2: Rating 9 atau 10 dipilih/hover -> Seluruh 10 bulatan menjadi Green Smile Icon (sesuai screenshot resmi OPPO) */}
                       {displayRating !== null && isHighRating && (
-                        num <= displayRating ? (
-                          <GreenSmileIcon />
-                        ) : (
-                          <span className="w-full h-full rounded-full bg-[#e5e7eb] text-[#4b5563] text-[13.5px] sm:text-[14px] flex items-center justify-center hover:bg-[#dcdfe3]">
-                            {num}
-                          </span>
-                        )
+                        <GreenSmileIcon />
                       )}
 
                       {/* Kondisi 3: Rating 1-8 dipilih/hover -> Hanya angka 1 s.d rating yang menjadi Yellow Neutral Icon */}

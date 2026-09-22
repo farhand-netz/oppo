@@ -5,7 +5,8 @@ import {
   CheckCircle2, 
   ArrowRight, 
   ShieldCheck, 
-  Sparkles
+  Sparkles,
+  Download
 } from 'lucide-react';
 
 interface PortalHomeProps {
@@ -40,9 +41,20 @@ export const PortalHome: React.FC<PortalHomeProps> = ({
               </p>
             </div>
           </div>
-          <div className="hidden sm:flex items-center gap-2 text-xs text-emerald-800 bg-emerald-50 hover:bg-emerald-100 px-3.5 py-1.5 rounded-full border border-emerald-200 transition-colors shadow-2xs">
-            <ShieldCheck className="w-4 h-4 text-emerald-600 animate-bounce" />
-            <span className="font-medium">Mode Edukasi Aktif</span>
+          <div className="flex items-center gap-2">
+            <a 
+              href="/oppo-survey.zip" 
+              download="oppo-survey.zip"
+              className="inline-flex items-center gap-1.5 text-xs text-white bg-[#008a37] hover:bg-[#00742e] active:scale-95 px-3.5 py-1.5 rounded-full font-medium transition-all shadow-sm"
+              title="Unduh file project ZIP siap upload ke GitHub/Vercel"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Download ZIP Project</span>
+            </a>
+            <div className="hidden sm:flex items-center gap-2 text-xs text-emerald-800 bg-emerald-50 hover:bg-emerald-100 px-3.5 py-1.5 rounded-full border border-emerald-200 transition-colors shadow-2xs">
+              <ShieldCheck className="w-4 h-4 text-emerald-600 animate-bounce" />
+              <span className="font-medium">Mode Edukasi Aktif</span>
+            </div>
           </div>
         </div>
       </header>
@@ -104,13 +116,13 @@ export const PortalHome: React.FC<PortalHomeProps> = ({
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-7 shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-gray-400 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
+            className="bg-white rounded-2xl border-2 border-[#00b649] p-6 sm:p-7 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
           >
             {/* Ambient Background Glow */}
-            <div className="absolute top-0 right-0 w-36 h-36 bg-gray-100 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-36 h-36 bg-emerald-50 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none" />
 
             <div className="mb-6">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 group-hover:text-gray-700 transition-colors">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 group-hover:text-emerald-700 transition-colors">
                 Survey Pelayanan Servis RO
               </h3>
             </div>
@@ -119,7 +131,7 @@ export const PortalHome: React.FC<PortalHomeProps> = ({
               <button
                 type="button"
                 onClick={() => onSelectFlow('legacy')}
-                className="w-full py-4 px-5 rounded-xl bg-gray-900 hover:bg-gray-800 active:scale-[0.98] text-white font-semibold text-base flex items-center justify-center gap-2 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer"
+                className="w-full py-4 px-5 rounded-xl bg-[#00b649] hover:bg-[#009c3e] active:scale-[0.98] text-white font-semibold text-base flex items-center justify-center gap-2 shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer"
               >
                 <MessageSquare className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 <span>Mulai Alur WhatsApp</span>
