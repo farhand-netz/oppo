@@ -125,9 +125,12 @@ export default function App() {
               transition={{ duration: 0.25, ease: 'easeInOut' }}
               className="w-full min-h-full"
             >
-              <div className="min-h-screen bg-gray-50 py-6">
-                <LegacySurvey onBack={handleBackToWhatsApp} />
-              </div>
+              <LegacySurvey
+                onBack={handleBackToWhatsApp}
+                onSubmit={(data) => {
+                  console.log('Survei Servis RO Terkirim:', data);
+                }}
+              />
             </motion.div>
           )}
 
