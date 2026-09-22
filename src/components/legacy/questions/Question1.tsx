@@ -9,7 +9,7 @@ interface Question1Props {
 const GreenSmileIcon = ({ className = 'w-[28px] h-[28px] sm:w-[32px] sm:h-[32px]' }: { className?: string }) => (
   <svg
     viewBox="0 0 24 24"
-    className={`${className} text-[#00b649] transition-transform`}
+    className={`${className} text-[#00b649] transition-transform pointer-events-none select-none`}
     fill="none"
     stroke="currentColor"
     strokeWidth="1.75"
@@ -27,7 +27,7 @@ const GreenSmileIcon = ({ className = 'w-[28px] h-[28px] sm:w-[32px] sm:h-[32px]
 const YellowNeutralIcon = ({ className = 'w-[28px] h-[28px] sm:w-[32px] sm:h-[32px]' }: { className?: string }) => (
   <svg
     viewBox="0 0 24 24"
-    className={`${className} text-[#f59e0b] transition-transform`}
+    className={`${className} text-[#f59e0b] transition-transform pointer-events-none select-none`}
     fill="none"
     stroke="currentColor"
     strokeWidth="1.75"
@@ -42,11 +42,8 @@ const YellowNeutralIcon = ({ className = 'w-[28px] h-[28px] sm:w-[32px] sm:h-[32
 );
 
 export default function Question1({ value, onChange }: Question1Props) {
-  const [hoveredNum, setHoveredNum] = useState<number | null>(null);
-
-  // Nilai rating aktif (mengutamakan hover jika ada, lalu value yang tersimpan)
-  const currentDisplayRating = hoveredNum !== null ? hoveredNum : (value !== undefined ? value : null);
-  const isHighRating = currentDisplayRating !== null && currentDisplayRating >= 9;
+  const currentRating = value !== undefined ? value : null;
+  const isHighRating = currentRating !== null && currentRating >= 9;
 
   return (
     <div>
@@ -85,39 +82,24 @@ export default function Question1({ value, onChange }: Question1Props) {
                 key={num}
                 type="button"
                 onClick={() => onChange(num)}
-                onMouseEnter={() => setHoveredNum(num)}
-                onMouseLeave={() => setHoveredNum(null)}
                 className="w-[29px] h-[29px] sm:w-[33px] sm:h-[33px] flex items-center justify-center transition-all duration-150 cursor-pointer active:scale-90 hover:scale-105 focus:outline-none"
                 aria-label={`Beri nilai ${num}`}
                 title={`Rating ${num}`}
               >
-                {/* Kondisi 1: Belum ada rating / belum di-hover -> Angka bulat abu-abu biasa */}
-                {currentDisplayRating === null && (
-                  <span className="w-full h-full rounded-full bg-[#e5e7eb] text-[#4b5563] text-[13px] sm:text-[14px] flex items-center justify-center hover:bg-[#dcdfe3] transition-colors">
+                {currentRating === null ? (
+                  <span className="pointer-events-none w-full h-full rounded-full bg-[#e5e7eb] text-[#4b5563] text-[13px] sm:text-[14px] flex items-center justify-center hover:bg-[#dcdfe3] transition-colors">
                     {num}
                   </span>
-                )}
-
-                {/* Kondisi 2: Rating 9 atau 10 dipilih/hover -> Hanya bulatan 1 s.d rating yang menjadi Green Smile Icon */}
-                {currentDisplayRating !== null && isHighRating && (
-                  num <= currentDisplayRating ? (
+                ) : num <= currentRating ? (
+                  isHighRating ? (
                     <GreenSmileIcon />
                   ) : (
-                    <span className="w-full h-full rounded-full bg-[#e5e7eb] text-[#4b5563] text-[13px] sm:text-[14px] flex items-center justify-center hover:bg-[#dcdfe3] transition-colors">
-                      {num}
-                    </span>
-                  )
-                )}
-
-                {/* Kondisi 3: Rating 1-8 dipilih/hover -> angka 1 s.d rating jadi yellow smiley, sisanya tetap angka */}
-                {currentDisplayRating !== null && !isHighRating && (
-                  num <= currentDisplayRating ? (
                     <YellowNeutralIcon />
-                  ) : (
-                    <span className="w-full h-full rounded-full bg-[#e5e7eb] text-[#4b5563] text-[13px] sm:text-[14px] flex items-center justify-center hover:bg-[#dcdfe3] transition-colors">
-                      {num}
-                    </span>
                   )
+                ) : (
+                  <span className="pointer-events-none w-full h-full rounded-full bg-[#e5e7eb] text-[#4b5563] text-[13px] sm:text-[14px] flex items-center justify-center hover:bg-[#dcdfe3] transition-colors">
+                    {num}
+                  </span>
                 )}
               </button>
             );
