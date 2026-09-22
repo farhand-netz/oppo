@@ -1,0 +1,6 @@
+{
+  "name": "Survey Layanan OPPO",
+  "description": "Halaman survei kepuasan layanan OPPO untuk edukasi pelanggan dengan penilaian 1-10.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
