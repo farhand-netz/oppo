@@ -11,7 +11,7 @@ interface SurveyProps {
 const GreenSmileIcon = () => (
   <svg
     viewBox="0 0 24 24"
-    className="w-[28px] h-[28px] sm:w-[31px] sm:h-[31px] text-[#00b649] transition-transform"
+    className="w-[28px] h-[28px] sm:w-[31px] sm:h-[31px] text-[#00b649] transition-transform pointer-events-none select-none"
     fill="none"
     stroke="currentColor"
     strokeWidth="1.75"
@@ -29,7 +29,7 @@ const GreenSmileIcon = () => (
 const YellowNeutralIcon = () => (
   <svg
     viewBox="0 0 24 24"
-    className="w-[28px] h-[28px] sm:w-[31px] sm:h-[31px] text-[#f59e0b] transition-transform"
+    className="w-[28px] h-[28px] sm:w-[31px] sm:h-[31px] text-[#f59e0b] transition-transform pointer-events-none select-none"
     fill="none"
     stroke="currentColor"
     strokeWidth="1.75"
@@ -86,7 +86,6 @@ const Q5_OPTIONS = [
 export default function LegacySurvey({ onBack, onSubmit }: SurveyProps) {
   // State Jawaban Survei RO
   const [selectedRating, setSelectedRating] = useState<number | null>(null);
-  const [hoveredRating, setHoveredRating] = useState<number | null>(null);
   const [q2Aspects, setQ2Aspects] = useState<string[]>([]);
   const [q2OtherText, setQ2OtherText] = useState<string>('');
   const [q3SameDay, setQ3SameDay] = useState<string>('');
@@ -96,10 +95,9 @@ export default function LegacySurvey({ onBack, onSubmit }: SurveyProps) {
   const [submitted, setSubmitted] = useState(false);
   const [validationError, setValidationError] = useState<string | null>(null);
 
-  // Status rating aktif (hover jika ada, atau nilai yang dipilih)
-  const displayRating = hoveredRating !== null ? hoveredRating : selectedRating;
-  const isHighRating = displayRating !== null && displayRating >= 9;
-  const isHighRatingSelected = selectedRating !== null && selectedRating >= 9;
+  // Status rating aktif berdasarkan nilai yang dipilih
+  const isHighRating = selectedRating !== null && selectedRating >= 9;
+  const isHighRatingSelected = isHighRating;
 
   const handleSelectRating = (num: number) => {
     setSelectedRating(num);
@@ -170,7 +168,6 @@ export default function LegacySurvey({ onBack, onSubmit }: SurveyProps) {
 
   const handleReset = () => {
     setSelectedRating(null);
-    setHoveredRating(null);
     setQ2Aspects([]);
     setQ2OtherText('');
     setQ3SameDay('');
@@ -272,32 +269,23 @@ export default function LegacySurvey({ onBack, onSubmit }: SurveyProps) {
                         id={`rating-ro-btn-${num}`}
                         type="button"
                         onClick={() => handleSelectRating(num)}
-                        onMouseEnter={() => setHoveredRating(num)}
-                        onMouseLeave={() => setHoveredRating(null)}
-                        className="w-[29px] h-[29px] sm:w-[32px] sm:h-[32px] flex items-center justify-center transition-all duration-150 cursor-pointer active:scale-90 focus:outline-none"
+                        className="w-[29px] h-[29px] sm:w-[32px] sm:h-[32px] flex items-center justify-center transition-all duration-150 cursor-pointer active:scale-90 hover:scale-105 focus:outline-none"
                         aria-label={`Beri nilai ${num}`}
                       >
-                        {/* Kondisi 1: Belum Dipilih dan Tidak Sedang Dihover -> Angka bulat abu-abu biasa */}
-                        {displayRating === null && (
-                          <span className="w-full h-full rounded-full bg-[#e5e7eb] text-[#4b5563] text-[13.5px] sm:text-[14px] flex items-center justify-center hover:bg-[#dcdfe3]">
+                        {selectedRating === null ? (
+                          <span className="pointer-events-none w-full h-full rounded-full bg-[#e5e7eb] text-[#4b5563] text-[13.5px] sm:text-[14px] flex items-center justify-center hover:bg-[#dcdfe3]">
                             {num}
                           </span>
-                        )}
-
-                        {/* Kondisi 2: Rating 9 atau 10 dipilih/hover -> Seluruh 10 bulatan menjadi Green Smile Icon (sesuai screenshot resmi OPPO) */}
-                        {displayRating !== null && isHighRating && (
-                          <GreenSmileIcon />
-                        )}
-
-                        {/* Kondisi 3: Rating 1-8 dipilih/hover -> Hanya angka 1 s.d rating yang menjadi Yellow Neutral Icon */}
-                        {displayRating !== null && !isHighRating && (
-                          num <= displayRating ? (
-                            <YellowNeutralIcon />
+                        ) : num <= selectedRating ? (
+                          isHighRating ? (
+                            <GreenSmileIcon />
                           ) : (
-                            <span className="w-full h-full rounded-full bg-[#e5e7eb] text-[#4b5563] text-[13.5px] sm:text-[14px] flex items-center justify-center hover:bg-[#dcdfe3]">
-                              {num}
-                            </span>
+                            <YellowNeutralIcon />
                           )
+                        ) : (
+                          <span className="pointer-events-none w-full h-full rounded-full bg-[#e5e7eb] text-[#4b5563] text-[13.5px] sm:text-[14px] flex items-center justify-center hover:bg-[#dcdfe3]">
+                            {num}
+                          </span>
                         )}
                       </button>
                     );
